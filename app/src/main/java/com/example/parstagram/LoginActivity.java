@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (e != null) {
                     Log.e(TAG, "Error creating user.", e);
 
-                    if (username == "" || password == "") {
+                    if (username.isEmpty() || password.isEmpty()) {
                         Toast.makeText(LoginActivity.this, "Username and password are required!", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (e != null) {
                     Log.e(TAG, "Issue with login", e);
 
-                    if (username == "" || password == "") {
+                    if (username.isEmpty() || password.isEmpty()) {
                         Toast.makeText(LoginActivity.this, "Username and password required to login!", Toast.LENGTH_SHORT).show();
                     } else {
                         // Could simply use only this Toast, but the prompt for username and password missing is less ideal looking.
