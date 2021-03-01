@@ -176,6 +176,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 Log.i(TAG, "Post saved successfully");
+                Toast.makeText(MainActivity.this, "Post created!", Toast.LENGTH_SHORT).show();
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
             }
