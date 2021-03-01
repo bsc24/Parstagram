@@ -11,4 +11,15 @@
     <!-- Custom Colors -->
     <color name="light_text">#7F7E7B</color>
     <color name="border">#C1C1C1</color>
+    <color name="gray">#999999</color>
+    <color name="light_gray">#C1C1C1</color>
+    <color name="blue">#282EED</color>
+    <color name="light_blue">#56B4EF</color>
+
+
+    <!-- Used for the button in different states -->
+    <color name="base">#FFFFFF</color>
+    <color name="focused">#DDDDDD</color>
+    <color name="pressed">#BBBBBB</color>
+
 </resources>
