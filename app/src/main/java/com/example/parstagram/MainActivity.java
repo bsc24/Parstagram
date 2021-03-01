@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -91,6 +92,14 @@ public class MainActivity extends AppCompatActivity {
                 logout();
             }
         });
+    }
+
+    // Added one import: import android.view.Menu;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate menu; this adds items to action bar (if it is present
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;    // Must return true for menu to be displayed, false will result in no menu display
     }
 
     private void logout() {
