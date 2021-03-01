@@ -104,8 +104,10 @@ public class LoginActivity extends AppCompatActivity {
                 if (e != null) {
                     Log.e(TAG, "Issue with login", e);
 
-                    if (username.isEmpty() || password.isEmpty()) {
-                        Toast.makeText(LoginActivity.this, "Username and password required to login!", Toast.LENGTH_SHORT).show();
+                    if (username.isEmpty()) {
+                        Toast.makeText(LoginActivity.this, "Missing username!", Toast.LENGTH_SHORT).show();
+                    } else if (password.isEmpty()) {
+                        Toast.makeText(LoginActivity.this, "Missing password!", Toast.LENGTH_SHORT).show();
                     } else {
                         // Could simply use only this Toast, but the prompt for username and password missing is less ideal looking.
                         Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
