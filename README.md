@@ -27,7 +27,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='' title='' width='' alt='' />
+<img src='CreateAccountWalkthrough.gif' title='Walkthrough for Account Creation, Login, and Logout' width='' alt='Video walkthrough for account creation, login, and logout' />
+
+<img src='CreatePostWalkthrough.gif' title='Walkthrough for Post Creation' width='' alt='Video walkthrough for creating posts' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
