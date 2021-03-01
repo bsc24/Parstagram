@@ -8,11 +8,15 @@
     android:layout_margin="16dp"
     android:orientation="vertical">
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_weight="0"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/blue"
+        android:backgroundTintMode="multiply"
+        android:textColor="@color/white"
         android:text="@string/logout"
         android:textSize="12sp" />
 
@@ -21,15 +25,21 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_weight="0"
+        android:layout_marginBottom="10dp"
         tools:srcCompat="@tools:sample/avatars"
         android:ems="10"
         android:contentDescription="@string/picture_to_post" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCapture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/blue"
+        android:backgroundTintMode="multiply"
+        android:textColor="@color/white"
         android:text="@string/capture_image" />
 
     <EditText
@@ -37,16 +47,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="@string/post_description_prompt"
         android:inputType="textPersonName"
         android:autofillHints="" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSubmit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/blue"
+        android:backgroundTintMode="multiply"
+        android:textColor="@color/white"
         android:text="@string/post" />
 
 
