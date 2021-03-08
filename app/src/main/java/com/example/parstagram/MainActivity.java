@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.parstagram.fragments.ComposeFragment;
 import com.example.parstagram.fragments.PostsFragment;
+import com.example.parstagram.fragments.ProfileFragment;
 import com.example.parstagram.models.Post;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.FindCallback;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_profile:
                         Log.i(TAG, "action_profile");
-                        //fragment = new ProfileFragment();
+                        fragment = new ProfileFragment();
                         break;
                     default:
                         Toast.makeText(MainActivity.this, "Unknown menu Item selected!",Toast.LENGTH_SHORT).show();
@@ -91,5 +92,13 @@ public class MainActivity extends AppCompatActivity {
         return true;    // Must return true for menu to be displayed, false will result in no menu display
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.inbox) {
+            Toast.makeText(this, "inbox selected", Toast.LENGTH_SHORT).show();
 
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

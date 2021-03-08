@@ -7,6 +7,7 @@
     tools:context=".fragments.ComposeFragment"
     android:orientation="vertical">
 
+    <!-- TODO: Move logout button -->
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
