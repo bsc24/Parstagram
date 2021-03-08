@@ -130,7 +130,6 @@ public class PostsFragment extends Fragment {
 
                 for(Post post: postsFound) {
                     Log.i(TAG, "Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
-                    Log.i(TAG, "Datatype: " + post.getCreatedAt().getClass());
                 }
 
                 adapter.clear();
