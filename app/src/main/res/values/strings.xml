@@ -9,4 +9,6 @@
     <string name="picture_to_post">Picture to post</string>
     <string name="logout">Logout</string>
     <string name="create_account">Create Account</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="post_description">A description of the above image.</string>
 </resources>
