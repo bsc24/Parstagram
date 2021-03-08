@@ -68,6 +68,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                         .load(post.getImage().getUrl())
                         .into(ivImage);
             }
+
+            tvUsername.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 }
