@@ -59,17 +59,25 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 Fragment fragment;
                 fragment = new ComposeFragment();
+
+                bottomNavigationView.getMenu().getItem(0).setIcon(R.drawable.instagram_home_outline_24);
+                bottomNavigationView.getMenu().getItem(1).setIcon(R.drawable.instagram_new_post_outline_24);
+                bottomNavigationView.getMenu().getItem(2).setIcon(R.drawable.instagram_user_outline_24);
+
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
                         Log.i(TAG, "action_home");
+                        menuItem.setIcon(R.drawable.instagram_home_filled_24);
                         fragment = new PostsFragment();
                         break;
                     case R.id.action_compose:
                         Log.i(TAG, "action_compose");
+                        menuItem.setIcon(R.drawable.instagram_new_post_filled_24);
                         fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
                         Log.i(TAG, "action_profile");
+                        menuItem.setIcon(R.drawable.instagram_user_filled_24);
                         fragment = new ProfileFragment();
                         break;
                     default:
