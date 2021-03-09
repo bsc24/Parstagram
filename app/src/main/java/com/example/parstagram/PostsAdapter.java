@@ -89,7 +89,17 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             });
 
             tvUsername.setText(post.getUser().getUsername());
-            tvDescription.setText(post.getDescription());
+
+            /*
+            tvUsername.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "action_profile: " + tvUsername.getText());
+                    Fragment fragment = new ProfileFragment(post.getUser());
+
+                }
+            });
+             */
 
             ParseFile image = post.getImage();
             if (image != null) {

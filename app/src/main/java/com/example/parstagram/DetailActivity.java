@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.parstagram.models.Comment;
@@ -20,6 +23,8 @@ import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,12 +66,20 @@ public class DetailActivity extends AppCompatActivity {
         Log.d(TAG, "Post ID being used: " + postId);
         getPost();
 
+        btnComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "btnComment onClick");
+                String commentText = etComment.getText().toString();
+                postComment(commentText);
+            }
+        });
 
-        adapter = new CommentsAdapter(this, comments);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        rvComments.setLayoutManager(layoutManager);
-        rvComments.setAdapter(adapter);
+//        adapter = new CommentsAdapter(this, comments);
+//
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+//        rvComments.setLayoutManager(layoutManager);
+//        rvComments.setAdapter(adapter);
     }
 
     private void queryComments() {
@@ -121,7 +134,7 @@ public class DetailActivity extends AppCompatActivity {
                 } else {
                     post = postsFound.get(0);
                     setItems();
-                    queryComments();
+//                    queryComments();
                 }
 
             }
@@ -142,11 +155,29 @@ public class DetailActivity extends AppCompatActivity {
         tvTimestamp.setText(TimeFormatter.getTimeDifference(post.getCreatedAt().toString()));
     }
 
-    private void postComment(String comment, String postId) {
+    private void postComment(String commentText) {
         Log.i(TAG, "postComment putting a comment on post with id: " + postId);
 
-        ParseObject com = new ParseObject("Comment");
-        // TODO: Complete posting comments
+        Comment comment = new Comment();
+        comment.setCommentText(commentText);
+        comment.setUser(ParseUser.getCurrentUser());
+        comment.setPost(post);
+
+        comment.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                Context context = getApplicationContext();
+                if (e != null) {
+                    Log.e(TAG, "Error saving comment", e);
+                    Toast.makeText(context, "Error saving post.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Log.i(TAG, "Post saved successfully");
+                Toast.makeText(context, "Comment posted!", Toast.LENGTH_SHORT).show();
+                etComment.setText("");
+            }
+        });
     }
 
 }
