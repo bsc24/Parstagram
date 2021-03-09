@@ -9,24 +9,24 @@ Time spent: **X** hours spent in total
 ## User Stories
 
 The following **required** functionality is completed:
-TODO: Demonstrate in a walkthrough gif
+
 - [x] User can view the last 20 posts submitted to "Instagram".
 - [x] The user should switch between different tabs - viewing all posts (feed view), compose (capture photos form camera) and profile tabs (posts made) using fragments and a Bottom Navigation View. (2 points)
 - [x] User can pull to refresh the last 20 posts submitted to "Instagram".
 
 The following **optional** features are implemented:
 
-- [ ] User sees app icon in home screen and styled bottom navigation view
-- [x] Style the feed to look like the real Instagram feed. TODO: Demonstrate in a walkthrough gif
-- [x] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling. TODO: Demonstrate in a walkthrough gif
-- [x] Show the username and creation time for each post. TODO: Demonstrate in a walkthrough gif
-- [x] User can tap a post to view post details, including timestamp and caption. TODO: Demonstrate in a walkthrough gif
+- [x] User sees app icon in home screen and styled bottom navigation view
+- [x] Style the feed to look like the real Instagram feed.
+- [x] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
+- [x] Show the username and creation time for each post.
+- [x] User can tap a post to view post details, including timestamp and caption.
 - [ ] User Profiles
       - [ ] Allow the logged in user to add a profile photo
-      - [ ] Display the profile photo with each post
-      - [ ] Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts
-- [x] User can comment on a post and see all comments for each post in the post details screen. TODO: Demonstrate in a walkthrough gif
-- [ ] User can like a post and see number of likes for each post in the post details screen.
+      - [x] Display the profile photo with each post
+      - [x] Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts
+- [x] User can comment on a post and see all comments for each post in the post details screen.
+- [x] User can like a post and see number of likes for each post in the post details screen.
 
 The following **additional** features are implemented:
 
@@ -36,13 +36,18 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='CreatePostWalkthroughv2.gif' title='Walkthrough for Post Creation (Version 2)' width='' alt='2nd version of a video walkthrough for creating posts' />
+
+<img src='LoginAndBrowse.gif' title='Walkthrough for Login, Browsing, and Logout' width='' alt='Video walkthrough for login, browsing, and logout' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
 Describe any challenges encountered while building the app.
+- For the following optional features, I was able to complete half of the task, but they were not fully completed
+      - Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts (I'm missing the grid view)
+      - User can like a post and see number of likes for each post in the post details screen (I'm missing ability to see likes for each post)
 
 ## Open-source libraries used
 
