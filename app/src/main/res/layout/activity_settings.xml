@@ -9,47 +9,47 @@
     android:orientation="vertical"
     android:layout_margin="10dp">
 
-    <ImageView
-        android:id="@+id/ivProfilePictureImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_weight="0"
-        android:layout_marginBottom="10dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:ems="10"
-        android:contentDescription="@string/picture_to_post" />
+<!--    <ImageView-->
+<!--        android:id="@+id/ivProfilePictureImage"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:layout_weight="0"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        tools:srcCompat="@tools:sample/avatars"-->
+<!--        android:ems="10"-->
+<!--        android:contentDescription="@string/picture_to_post" />-->
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal">-->
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnCapture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="@color/blue"
-            android:backgroundTintMode="multiply"
-            android:textColor="@color/white"
-            android:text="@string/capture_image" />
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btnCapture"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:background="@drawable/rounded_button"-->
+<!--            android:backgroundTint="@color/blue"-->
+<!--            android:backgroundTintMode="multiply"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:text="@string/capture_image" />-->
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnChangeProfilePicture"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:textColor="@color/white"
-            android:background="@drawable/rounded_button"
-            android:backgroundTint="@color/blue"
-            android:backgroundTintMode="multiply"
-            android:text="@string/set_profile_picture" />
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:id="@+id/btnChangeProfilePicture"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:background="@drawable/rounded_button"-->
+<!--            android:backgroundTint="@color/blue"-->
+<!--            android:backgroundTintMode="multiply"-->
+<!--            android:text="@string/set_profile_picture" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogout"

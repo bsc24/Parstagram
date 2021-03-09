@@ -1,6 +1,7 @@
 package com.example.parstagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.parstagram.models.Post;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -89,7 +91,13 @@ public class ProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
 
         public void bind(ParseUser user) {
-
+            ParseFile image = user.getParseFile("profilePicture");
+            if (image != null) {
+                ivProfilePic.setBackground(null);
+                Glide.with(context)
+                        .load(image.getUrl())
+                        .into(ivProfilePic);
+            }
             tvUsername.setText(user.getUsername());
         }
     }
@@ -110,6 +118,16 @@ public class ProfileAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                         .load(post.getImage().getUrl())
                         .into(ivPostImage);
             }
+
+            ivPostImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "ivPostImage onClick");
+                    Intent i = new Intent(context, DetailActivity.class);
+                    i.putExtra("postId", post.getObjectId());
+                    context.startActivity(i);
+                }
+            });
         }
     }
 }
