@@ -1,10 +1,13 @@
 package com.example.parstagram;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +20,8 @@ import com.parse.ParseFile;
 import java.util.List;
 
 public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> {
+
+    public static final String TAG = "PostsAdapter";
 
     private Context context;
     private List<Post> posts;
@@ -57,6 +62,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        private LinearLayout llPost;
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
@@ -64,6 +70,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            llPost = itemView.findViewById(R.id.llPost);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
@@ -71,6 +78,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         }
 
         public void bind(Post post) {
+            llPost.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "Container onClick");
+                    Intent i = new Intent(context, DetailActivity.class);
+                    i.putExtra("postId", post.getObjectId());
+                    context.startActivity(i);
+                }
+            });
+
             tvUsername.setText(post.getUser().getUsername());
             tvDescription.setText(post.getDescription());
 
