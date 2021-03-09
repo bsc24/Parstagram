@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.parstagram.models.Post;
 import com.parse.ParseFile;
+import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -104,16 +105,18 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             tvUsername.setText(post.getUser().getUsername());
 
-            /*
+
             tvUsername.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.i(TAG, "action_profile: " + tvUsername.getText());
-                    Fragment fragment = new ProfileFragment(post.getUser());
+                    Intent i = new Intent(context, ProfileActivity.class);
+                    i.putExtra("userId", post.getUser().getObjectId());
+                    context.startActivity(i);
 
                 }
             });
-             */
+
 
             ParseFile image = post.getImage();
             if (image != null) {
