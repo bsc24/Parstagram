@@ -18,11 +18,14 @@ import android.widget.LinearLayout;
 import com.example.parstagram.EndlessRecyclerViewScrollListener;
 import com.example.parstagram.PostsAdapter;
 import com.example.parstagram.R;
+import com.example.parstagram.TimeFormatter;
 import com.example.parstagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,11 +36,13 @@ import java.util.List;
 public class PostsFragment extends Fragment {
 
     public static final String TAG = "PostsFragment";
+
     protected SwipeRefreshLayout swipeContainer;
     private RecyclerView rvPosts;
     protected PostsAdapter adapter;
-    protected List<Post> posts;
     protected EndlessRecyclerViewScrollListener scrollListener;
+
+    protected List<Post> posts;
 
     public PostsFragment() {
         // Required empty public constructor
@@ -85,11 +90,13 @@ public class PostsFragment extends Fragment {
         queryPosts();
     }
 
-    private void loadMoreData(Date createdAt) {
+    // Loads data older than the date it has been provided
+    protected void loadMoreData(Date createdAt) {
+        Log.i(TAG, "loadMoreData is loading data older than date: " + createdAt.toString());
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
 
         query.include(Post.KEY_USER);
-        query.setLimit(10);
+        query.setLimit(20);
         query.whereLessThan(Post.KEY_CREATED_AT, createdAt);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Post>() {
@@ -117,7 +124,7 @@ public class PostsFragment extends Fragment {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
 
         query.include(Post.KEY_USER);
-        query.setLimit(10);
+        query.setLimit(20);
         query.addDescendingOrder(Post.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Post>() {
             @Override
