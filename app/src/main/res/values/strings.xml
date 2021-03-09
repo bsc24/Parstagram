@@ -11,4 +11,7 @@
     <string name="create_account">Create Account</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="post_description">A description of the above image.</string>
+    <string name="time_since_post">2h ago</string>
+    <string name="add_comment">Add a comment</string>
+    <string name="comment">Comment</string>
 </resources>
