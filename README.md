@@ -22,9 +22,9 @@ The following **optional** features are implemented:
 - [x] Show the username and creation time for each post.
 - [x] User can tap a post to view post details, including timestamp and caption.
 - [ ] User Profiles
-      - [ ] Allow the logged in user to add a profile photo
-      - [x] Display the profile photo with each post
-      - [x] Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts
+  - [ ] Allow the logged in user to add a profile photo
+  - [x] Display the profile photo with each post
+  - [x] Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts
 - [x] User can comment on a post and see all comments for each post in the post details screen.
 - [x] User can like a post and see number of likes for each post in the post details screen.
 
@@ -46,8 +46,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Describe any challenges encountered while building the app.
 - For the following optional features, I was able to complete half of the task, but they were not fully completed
-      - Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts (I'm missing the grid view)
-      - User can like a post and see number of likes for each post in the post details screen (I'm missing ability to see likes for each post)
+  - Tapping on a post's username or profile photo goes to that user's profile page and shows a grid view of the user's posts (I'm missing the grid view)
+  - User can like a post and see number of likes for each post in the post details screen (I'm missing ability to see likes for each post)
 
 ## Open-source libraries used
 
