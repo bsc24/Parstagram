@@ -14,4 +14,5 @@
     <string name="time_since_post">2h ago</string>
     <string name="add_comment">Add a comment</string>
     <string name="comment">Comment</string>
+    <string name="set_profile_picture">Set Profile Picture</string>
 </resources>
