@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.parstagram.models.Post;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -65,6 +66,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private LinearLayout llPost;
+        private ImageView ivProfilePic;
         private TextView tvUsername;
         private ImageView ivImage;
         private Button btnLike;
@@ -79,6 +81,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             llPost = itemView.findViewById(R.id.llPost);
+            ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             btnLike = itemView.findViewById(R.id.btnLike);
@@ -103,6 +106,14 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 }
             });
 
+            ParseFile profilePic = post.getUser().getParseFile("profilePicture");
+            if (profilePic != null) {
+                Glide.with(context)
+                        .load(profilePic.getUrl())
+                        .transform(new RoundedCorners(300))
+                        .into(ivProfilePic);
+            }
+
             tvUsername.setText(post.getUser().getUsername());
 
 
@@ -121,7 +132,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context)
-                        .load(post.getImage().getUrl())
+                        .load(image.getUrl())
                         .into(ivImage);
             }
 

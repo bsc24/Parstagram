@@ -12,7 +12,7 @@
         android:id="@+id/ivProfilePic"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        tools:srcCompat="@tools:sample/avatars"  />
+        android:background="@drawable/instagram_user_outline_24" />
 
     <TextView
         android:id="@+id/tvUsername"
@@ -20,7 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_toEndOf="@+id/ivProfilePic"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:text="@string/username" />
 
     <TextView
@@ -30,6 +33,7 @@
         android:layout_alignTop="@+id/tvUsername"
         android:layout_marginStart="8dp"
         android:layout_toEndOf="@+id/tvUsername"
+        android:textColor="@color/black"
         android:text="@string/comment" />
 
 </RelativeLayout>

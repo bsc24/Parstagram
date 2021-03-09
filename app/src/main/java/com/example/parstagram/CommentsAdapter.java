@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.parstagram.models.Comment;
 import com.example.parstagram.models.Post;
 import com.parse.ParseException;
@@ -198,16 +199,26 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private class CommentViewHolder extends RecyclerView.ViewHolder {
 
+        ImageView ivProfilePic;
         TextView tvUsername;
         TextView tvComment;
 
         public CommentViewHolder(@NonNull View itemView) {
             super(itemView);
+            ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             tvComment = itemView.findViewById(R.id.tvComment);
         }
 
         public void bind(Comment comment) {
+            ParseFile profilePic = comment.getUser().getParseFile("profilePicture");
+            if (profilePic != null) {
+                ivProfilePic.setBackground(null);
+                Glide.with(context)
+                        .load(profilePic.getUrl())
+                        .transform(new RoundedCorners(300))
+                        .into(ivProfilePic);
+            }
             tvUsername.setText(comment.getUser().getUsername());
             tvComment.setText(comment.getCommentText());
         }

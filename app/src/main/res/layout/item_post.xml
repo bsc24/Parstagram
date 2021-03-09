@@ -9,14 +9,28 @@
     android:layout_marginBottom="20dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginStart="3dp"
-        android:text="@string/username" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/ivProfilePic"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="3dp"
+            android:text="@string/username" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/ivImage"

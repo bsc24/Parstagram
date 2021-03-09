@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.inbox) {
-            Toast.makeText(this, "inbox selected", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "inbox selected");
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivityForResult(intent, REQUEST_CODE);
             return true;
@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.i(TAG, "onActivityResult, requestCode: " + requestCode + ", resultCode: "+ resultCode);
         if (requestCode == REQUEST_CODE) {
             switch(resultCode) {
                 case RESULT_OK:
