@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Parstagram"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".DetailActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -33,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
