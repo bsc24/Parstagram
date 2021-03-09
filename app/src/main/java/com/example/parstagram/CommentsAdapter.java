@@ -1,6 +1,7 @@
 package com.example.parstagram;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -92,6 +94,8 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private class DetailedPostViewHolder extends RecyclerView.ViewHolder {
 
+        private final LinearLayout llUser;
+        private final ImageView ivProfilePic;
         private final TextView tvUsername;
         private final ImageView ivImage;
         private final Button btnLike;
@@ -107,6 +111,8 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public DetailedPostViewHolder(@NonNull View itemView) {
             super(itemView);
+            llUser = itemView.findViewById(R.id.llUser);
+            ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             btnLike = itemView.findViewById(R.id.btnLike);
@@ -123,7 +129,25 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
 
         public void bind(Post post) {
-            Log.i(TAG, "setItems");
+            llUser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "action_profile: " + tvUsername.getText());
+                    Intent i = new Intent(context, ProfileActivity.class);
+                    i.putExtra("userId", post.getUser().getObjectId());
+                    context.startActivity(i);
+
+                }
+            });
+
+            ParseFile profilePic = post.getUser().getParseFile("profilePicture");
+            if (profilePic != null) {
+                Glide.with(context)
+                        .load(profilePic.getUrl())
+                        .transform(new RoundedCorners(300))
+                        .into(ivProfilePic);
+            }
+
             tvUsername.setText(post.getUser().getUsername());
             ParseFile image = post.getImage();
             if (image != null) {
@@ -191,6 +215,8 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     Log.i(TAG, "Post saved successfully");
                     Toast.makeText(context, "Comment posted!", Toast.LENGTH_SHORT).show();
                     etComment.setText("");
+                    comments.add(comment);
+                    notifyDataSetChanged();
                 }
             });
         }
@@ -219,7 +245,30 @@ public class CommentsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         .transform(new RoundedCorners(300))
                         .into(ivProfilePic);
             }
+
+            ivProfilePic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "action_profile: " + tvUsername.getText());
+                    Intent i = new Intent(context, ProfileActivity.class);
+                    i.putExtra("userId", comment.getUser().getObjectId());
+                    context.startActivity(i);
+
+                }
+            });
+
             tvUsername.setText(comment.getUser().getUsername());
+            tvUsername.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "action_profile: " + tvUsername.getText());
+                    Intent i = new Intent(context, ProfileActivity.class);
+                    i.putExtra("userId", comment.getUser().getObjectId());
+                    context.startActivity(i);
+
+                }
+            });
+
             tvComment.setText(comment.getCommentText());
         }
     }

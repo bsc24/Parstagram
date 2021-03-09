@@ -66,6 +66,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private LinearLayout llPost;
+        private LinearLayout llUser;
         private ImageView ivProfilePic;
         private TextView tvUsername;
         private ImageView ivImage;
@@ -81,6 +82,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             llPost = itemView.findViewById(R.id.llPost);
+            llUser = itemView.findViewById(R.id.llUser);
             ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
@@ -106,18 +108,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 }
             });
 
-            ParseFile profilePic = post.getUser().getParseFile("profilePicture");
-            if (profilePic != null) {
-                Glide.with(context)
-                        .load(profilePic.getUrl())
-                        .transform(new RoundedCorners(300))
-                        .into(ivProfilePic);
-            }
-
-            tvUsername.setText(post.getUser().getUsername());
-
-
-            tvUsername.setOnClickListener(new View.OnClickListener() {
+            llUser.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.i(TAG, "action_profile: " + tvUsername.getText());
@@ -127,6 +118,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
                 }
             });
+
+            ParseFile profilePic = post.getUser().getParseFile("profilePicture");
+            if (profilePic != null) {
+                Glide.with(context)
+                        .load(profilePic.getUrl())
+                        .transform(new RoundedCorners(300))
+                        .into(ivProfilePic);
+            }
+
+            tvUsername.setText(post.getUser().getUsername());
 
 
             ParseFile image = post.getImage();
