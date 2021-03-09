@@ -10,6 +10,8 @@ public class User extends ParseObject {
 
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
+    public static final String KEY_PROFILE_PICTURE = "profilePicture";
+    public static final String KEY_ID = "objectId";
 
 
     public void setUsername(String username) {
@@ -20,6 +22,10 @@ public class User extends ParseObject {
         put(KEY_PASSWORD, password);
     }
 
+    public void setProfilePicture(ParseFile image) {
+        put(KEY_PROFILE_PICTURE, image);
+    }
+
     public String getUsername() {
         return getString(KEY_USERNAME);
     }
@@ -28,4 +34,7 @@ public class User extends ParseObject {
         return getString(KEY_PASSWORD);
     }
 
+    public ParseFile getProfilePicture() {
+        return getParseFile(KEY_PROFILE_PICTURE);
+    }
 }

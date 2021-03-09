@@ -56,7 +56,6 @@ public class ComposeFragment extends Fragment {
     private Button btnCapturePicture;
     private ImageView ivPostImage;
     private Button btnSubmit;
-    private Button btnLogout;
 
     public ComposeFragment() {
         // Required empty public constructor
@@ -82,7 +81,6 @@ public class ComposeFragment extends Fragment {
         btnCapturePicture = view.findViewById(R.id.btnCapture);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
-        btnLogout = view.findViewById(R.id.btnLogout);
 
         btnCapturePicture.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,25 +108,9 @@ public class ComposeFragment extends Fragment {
 
             }
         });
-
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "btnLogout onClick");
-                logout();
-            }
-        });
-
     }
 
 
-    private void logout() {
-        ParseUser.logOut();
-        Intent i = new Intent(getContext(), LoginActivity.class);
-        startActivity(i);
-        getActivity().finish();
-    }
 
     private void launchCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

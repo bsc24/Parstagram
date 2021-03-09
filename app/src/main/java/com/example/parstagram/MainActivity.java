@@ -1,10 +1,12 @@
 package com.example.parstagram;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -16,10 +18,13 @@ import com.example.parstagram.fragments.ComposeFragment;
 import com.example.parstagram.fragments.PostsFragment;
 import com.example.parstagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
+    public static final int REQUEST_CODE = 20;
+
     final FragmentManager fragmentManager = getSupportFragmentManager();
 
     private FrameLayout flContainer;
@@ -82,9 +87,34 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.inbox) {
             Toast.makeText(this, "inbox selected", Toast.LENGTH_SHORT).show();
-
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivityForResult(intent, REQUEST_CODE);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            switch(resultCode) {
+                case RESULT_OK:
+                    logout();
+                    break;
+                default:
+                    // Doesn't matter
+            }
+
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+
+    private void logout() {
+        ParseUser.logOut();
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+        finish();
+    }
+
 }

@@ -7,19 +7,6 @@
     tools:context=".fragments.ComposeFragment"
     android:orientation="vertical">
 
-    <!-- TODO: Move logout button to a different location (maybe as a menu item or another fragment?) -->
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_weight="0"
-        android:background="@drawable/rounded_button"
-        android:backgroundTint="@color/blue"
-        android:backgroundTintMode="multiply"
-        android:textColor="@color/white"
-        android:text="@string/logout"
-        android:textSize="12sp" />
-
     <ImageView
         android:id="@+id/ivPostImage"
         android:layout_width="match_parent"
