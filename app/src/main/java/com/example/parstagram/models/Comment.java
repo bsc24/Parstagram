@@ -10,6 +10,7 @@ public class Comment extends ParseObject {
     public static final String KEY_COMMENT_TEXT = "commentText";
     public static final String KEY_POST = "post";
     public static final String KEY_USER = "user";
+    public static final String KEY_CREATED_AT = "createdAt";
 
 
     public void setCommentText(String commentText) {

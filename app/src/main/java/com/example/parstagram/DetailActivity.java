@@ -38,12 +38,6 @@ public class DetailActivity extends AppCompatActivity {
     String postId;
     List<Comment> comments;
 
-    private TextView tvUsername;
-    private ImageView ivImage;
-    private TextView tvDescription;
-    private TextView tvTimestamp;
-    private EditText etComment;
-    private Button btnComment;
     private RecyclerView rvComments;
 
     @Override
@@ -54,32 +48,15 @@ public class DetailActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_detail);
 
-        tvUsername = findViewById(R.id.tvUsername);
-        ivImage = findViewById(R.id.ivImage);
-        tvDescription = findViewById(R.id.tvDescription);
-        tvTimestamp = findViewById(R.id.tvTimestamp);
-        etComment = findViewById(R.id.etComment);
-        btnComment = findViewById(R.id.btnPostComment);
 
         Intent intent = getIntent();
         postId = intent.getStringExtra("postId");
         Log.d(TAG, "Post ID being used: " + postId);
+
+        rvComments = findViewById(R.id.rvDetailedPost);
+
         getPost();
 
-        btnComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "btnComment onClick");
-                String commentText = etComment.getText().toString();
-                postComment(commentText);
-            }
-        });
-
-//        adapter = new CommentsAdapter(this, comments);
-//
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        rvComments.setLayoutManager(layoutManager);
-//        rvComments.setAdapter(adapter);
     }
 
     private void queryComments() {
@@ -89,6 +66,7 @@ public class DetailActivity extends AppCompatActivity {
         query.include(Comment.KEY_USER);
         query.include(Comment.KEY_POST);
         query.whereEqualTo(Comment.KEY_POST, post);
+        query.addDescendingOrder(Comment.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Comment>() {
             @Override
             public void done(List<Comment> commentsFound, ParseException e) {
@@ -133,51 +111,20 @@ public class DetailActivity extends AppCompatActivity {
                     Log.e(TAG, "Expected to find 1 post, instead found " + postsFound.size());
                 } else {
                     post = postsFound.get(0);
-                    setItems();
-//                    queryComments();
+//                    setItems();
+                    setupRecyclerView();
+                    queryComments();
                 }
 
             }
         });
     }
 
-    private void setItems() {
-        Log.i(TAG, "setItems");
-        tvUsername.setText(post.getUser().getUsername());
-        ParseFile image = post.getImage();
-        if (image != null) {
-            Glide.with(this)
-                    .load(post.getImage().getUrl())
-                    .into(ivImage);
-        }
+    private void setupRecyclerView() {
+        adapter = new CommentsAdapter(this, comments, post);
 
-        tvDescription.setText(post.getDescription());
-        tvTimestamp.setText(TimeFormatter.getTimeDifference(post.getCreatedAt().toString()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rvComments.setLayoutManager(layoutManager);
+        rvComments.setAdapter(adapter);
     }
-
-    private void postComment(String commentText) {
-        Log.i(TAG, "postComment putting a comment on post with id: " + postId);
-
-        Comment comment = new Comment();
-        comment.setCommentText(commentText);
-        comment.setUser(ParseUser.getCurrentUser());
-        comment.setPost(post);
-
-        comment.saveInBackground(new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                Context context = getApplicationContext();
-                if (e != null) {
-                    Log.e(TAG, "Error saving comment", e);
-                    Toast.makeText(context, "Error saving post.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                Log.i(TAG, "Post saved successfully");
-                Toast.makeText(context, "Comment posted!", Toast.LENGTH_SHORT).show();
-                etComment.setText("");
-            }
-        });
-    }
-
 }

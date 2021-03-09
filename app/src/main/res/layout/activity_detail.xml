@@ -9,54 +9,9 @@
     android:layout_marginBottom="20dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_marginStart="3dp"
-        android:text="@string/username" />
-
-    <ImageView
-        android:id="@+id/ivImage"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDetailedPost"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="5dp"
-        android:contentDescription="@string/picture_to_post"
-        android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/black"
-        android:text="@string/post_description" />
-
-    <TextView
-        android:id="@+id/tvTimestamp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textColor="@color/gray"
-        android:text="@string/time_since_post" />
-
-
-    <EditText
-        android:id="@+id/etComment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/add_comment"
-        android:inputType="text" />
-
-    <Button
-        android:id="@+id/btnPostComment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/comment" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
