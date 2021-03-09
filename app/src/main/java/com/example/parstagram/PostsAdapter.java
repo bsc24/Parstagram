@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -65,16 +66,29 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private LinearLayout llPost;
         private TextView tvUsername;
         private ImageView ivImage;
+        private Button btnLike;
+        private Button btnComment;
+        private Button btnShare;
+        private Button btnFavorite;
         private TextView tvDescription;
         private TextView tvTimestamp;
+
+        boolean liked, favorited;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             llPost = itemView.findViewById(R.id.llPost);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
+            btnLike = itemView.findViewById(R.id.btnLike);
+            btnComment = itemView.findViewById(R.id.btnComment);
+            btnShare = itemView.findViewById(R.id.btnShare);
+            btnFavorite = itemView.findViewById(R.id.btnFavorite);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
+
+            liked = false;
+            favorited = false;
         }
 
         public void bind(Post post) {
@@ -107,6 +121,32 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                         .load(post.getImage().getUrl())
                         .into(ivImage);
             }
+
+            btnLike.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "btnLike onClick");
+                    liked = !liked;
+
+                    if (liked)
+                        btnLike.setBackgroundResource(R.drawable.ufi_heart_active);
+                    else
+                        btnLike.setBackgroundResource(R.drawable.ufi_heart_icon);
+                }
+            });
+
+            btnFavorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "btnFavorite onClick");
+                    favorited = !favorited;
+
+                    if (favorited)
+                        btnFavorite.setBackgroundResource(R.drawable.ufi_save_active);
+                    else
+                        btnFavorite.setBackgroundResource(R.drawable.ufi_save_icon);
+                }
+            });
 
             tvDescription.setText(post.getDescription());
             tvTimestamp.setText(TimeFormatter.getTimeDifference(post.getCreatedAt().toString()));
